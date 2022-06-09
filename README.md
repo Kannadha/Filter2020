@@ -27,7 +27,7 @@
 
 ### Deploye To Heroku 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MrMKN/Doctor_Strange-BOT)                                
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MrMKN/https://github.com/Kannadha/Filter2020)                                
 
 
 ## Original Repo

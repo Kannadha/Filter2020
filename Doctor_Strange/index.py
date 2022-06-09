@@ -3,8 +3,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
-from info import ADMINS
-from info import INDEX_REQ_CHANNEL as LOG_CHANNEL
+from info import ADMINS, LOG_CHANNEL
 from Cluster.ia_filterdb import save_file
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from utils import temp
@@ -14,7 +13,7 @@ logger.setLevel(logging.INFO)
 lock = asyncio.Lock()
 
 
-@Client.on_callback_query(filters.regex(r'^indexd'))
+@Client.on_callback_query(filters.regex(r'^index'))
 async def index_files(bot, query):
     if query.data.startswith('index_cancel'):
         temp.CANCEL = True
@@ -85,7 +84,7 @@ async def send_for_index(bot, message):
         buttons = [
             [
                 InlineKeyboardButton('Yes',
-                                     callback_data=f'indexd#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
+                                     callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
             ],
             [
                 InlineKeyboardButton('close', callback_data='close_data'),
@@ -106,11 +105,11 @@ async def send_for_index(bot, message):
     buttons = [
         [
             InlineKeyboardButton('Accept Index',
-                                 callback_data=f'indexd#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
+                                 callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
         ],
         [
             InlineKeyboardButton('Reject Index',
-                                 callback_data=f'indexd#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
+                                 callback_data=f'index#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)

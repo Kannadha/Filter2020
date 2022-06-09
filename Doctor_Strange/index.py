@@ -14,7 +14,7 @@ logger.setLevel(logging.INFO)
 lock = asyncio.Lock()
 
 
-@Client.on_callback_query(filters.regex(r'^index'))
+@Client.on_callback_query(filters.regex(r'^indexd'))
 async def index_files(bot, query):
     if query.data.startswith('index_cancel'):
         temp.CANCEL = True
@@ -85,7 +85,7 @@ async def send_for_index(bot, message):
         buttons = [
             [
                 InlineKeyboardButton('Yes',
-                                     callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
+                                     callback_data=f'indexd#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
             ],
             [
                 InlineKeyboardButton('close', callback_data='close_data'),
@@ -106,11 +106,11 @@ async def send_for_index(bot, message):
     buttons = [
         [
             InlineKeyboardButton('Accept Index',
-                                 callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
+                                 callback_data=f'indexd#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
         ],
         [
             InlineKeyboardButton('Reject Index',
-                                 callback_data=f'index#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
+                                 callback_data=f'indexd#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
